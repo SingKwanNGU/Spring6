@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="studentp" class="com.atguigu.spring6.iocxml.dimap.Student"
+       p:sid="100" p:sname="mary" p:lessonList-ref="lessonList" p:teacherMap-ref="teacherMap"  >
+    </bean>
+
+    <bean id="student" class="com.atguigu.spring6.iocxml.dimap.Student">
+        <property name="sid" value="10000" ></property>
+        <property name="sname" value="lucy" ></property>
+        <property name="lessonList" ref="lessonList"></property>
+        <property name="teacherMap" ref="teacherMap"></property>
+    </bean>
+
+    <util:list id="lessonList">
+        <ref bean="lessonone"></ref>
+        <ref bean="lessontwo"></ref>
+    </util:list>
+
+    <util:map id="teacherMap">
+        <entry>
+            <key>
+                <value>1005</value>
+            </key>
+            <ref bean="teacherone"></ref>
+        </entry>
+        <entry>
+            <key>
+                <value>1006</value>
+            </key>
+            <ref bean="teachertwo"></ref>
+        </entry>
+    </util:map>
+
+    <bean id="teacherone" class="com.atguigu.spring6.iocxml.dimap.Teacher">
+        <property name="teacherId" value="100"></property>
+        <property name="teacherName" value="西门"></property>
+    </bean>
+
+    <bean id="teachertwo" class="com.atguigu.spring6.iocxml.dimap.Teacher">
+        <property name="teacherId" value="200"></property>
+        <property name="teacherName" value="上官"></property>
+    </bean>
+
+    <bean id="lessonone" class="com.atguigu.spring6.iocxml.dimap.Lesson">
+        <property name="lessonName" value="java开发"></property>
+    </bean>
+
+    <bean id="lessontwo" class="com.atguigu.spring6.iocxml.dimap.Lesson">
+        <property name="lessonName" value="前端开发"></property>
+    </bean>
+
+
+</beans>
